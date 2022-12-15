@@ -24,3 +24,7 @@ def load_graph (filename, node_factory):
         name: node_factory (attributes)
         for name, attributes in graph.nodes (data = True)
     }
+    return nodes, nx.Graph (
+        (nodes [name1], nodes[name2], weights)
+        for name1, name2, weights in graph.edges (data = True)
+    )
