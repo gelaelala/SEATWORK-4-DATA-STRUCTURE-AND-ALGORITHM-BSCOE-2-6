@@ -13,4 +13,6 @@ class City(NamedTuple):
             name = attrs ["xlabel"],
             country = attrs ["country"],
             year = int (attrs ["year"]) or None,
+            latitude = float (attrs ["latitude"]),
+            longitude = float (attrs ["longitude"]),
         )
