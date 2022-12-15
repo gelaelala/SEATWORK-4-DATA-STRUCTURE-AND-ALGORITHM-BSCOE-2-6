@@ -3,3 +3,7 @@ from graph import City, load_graph
 
 def is_twentieth_century (year):
     return year and 1901 <= year <= 2000
+
+nodes, graph = load_graph ("roadmap/roadmap.dot", City.from_dict)
+for node in nx.bfs_tree (graph, nodes ["edinburgh"]):
+    print ("📍", node.name)
