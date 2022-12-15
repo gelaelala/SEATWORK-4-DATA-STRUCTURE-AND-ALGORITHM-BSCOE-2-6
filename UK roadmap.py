@@ -5,5 +5,5 @@ nodes, graph = load_graph ("roadmap.dot", City.from_dict)
 print(nodes ["london"])
 print (graph)
 
-for neighbor, weights in graph [nodes["london"]].items():
-    print (weights ["distance"], neighbor.name)
+for neighbor, weights in sort_by (graph [nodes["london"]], by_distance):
+    print (f"{weights ['distance']:>3} miles, {neighbor.name}")
