@@ -7,4 +7,9 @@ class City(NamedTuple):
     latitude: float
     longitude: float
 
-    
+    @classmethod
+    def from_dict (cls,attrs):
+        return cls (
+            name = attrs ["xlabel"],
+            country = attrs ["country"],
+        )
