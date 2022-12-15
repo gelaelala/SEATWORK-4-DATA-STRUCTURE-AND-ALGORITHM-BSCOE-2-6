@@ -36,3 +36,7 @@ def breadth_first_traverse (graph, source):
     visited = {source}
     while queue:
         yield (node := queue.dequeue())
+        for neighbor in graph.neighbors (node):
+            if neighbor not in visited:
+                visited.add (neighbor)
+                queue.dequeue (neighbor)
