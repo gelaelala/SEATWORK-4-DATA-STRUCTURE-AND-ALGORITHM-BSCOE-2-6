@@ -9,7 +9,7 @@ def order (neighbors):
         return city.latitude
     return iter (sorted (neighbors, key = by_latitude, reverse = True))
 
-nodes, graph = load_graph ("roadmap/roadmap.dot", City.from_dict)
+nodes, graph = load_graph ("roadmap/roadmap.dot", sort_neighbors = order)
 for node in nx.bfs_tree (graph, nodes ["edinburgh"]):
     print ("📍", node.name)
     if is_twentieth_century (node.year):
