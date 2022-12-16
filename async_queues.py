@@ -28,6 +28,15 @@ async def main (args):
             )
             for i in range(args.num_workers)
         ]
+
+        await queue.put(Job(args.url))
+        await queue.join()
+
+        for task in tasks:
+            task.cancel()
+
+        await asyncio.gather(*tasks, return_expectations = True)
+        
         display (links)
     finally:
         await session.close()
