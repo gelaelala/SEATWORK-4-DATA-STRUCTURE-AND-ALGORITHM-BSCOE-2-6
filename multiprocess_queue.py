@@ -16,5 +16,9 @@ def main():
     text = reverse_md5("a9d1cbf71942327e98b40cf5ef38a960")
     print (f"{text} (found in {time.perf_counter() - t1:.1f}s)")
 
+def chuck_indices(length, num_chucks):
+    start = 0
+    
+
 if __name__ == "__main__":
     main()
