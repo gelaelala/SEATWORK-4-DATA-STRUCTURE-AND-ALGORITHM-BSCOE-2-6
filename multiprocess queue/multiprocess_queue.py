@@ -1,12 +1,10 @@
 import time
 from hashlib import md5
-from itertools import product
 from string import ascii_lowercase
 import multiprocessing
 from dataclasses import dataclass
 import argparse
 import queue
-import time
 
 POISON_PILL = None
 
