@@ -37,6 +37,14 @@ PRODUCTS = (
     ":yo-yo:",
 )
 
+@dataclass (order = True)
+class Product:
+    priority: int
+    label: str = field (compare = False)
+
+    def __str__ (self):
+        return self.label
+
 class Worker (threading.Thread):
     def __init__ (self, speed, buffer):
         super().__init__ (daemon = True)
