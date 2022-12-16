@@ -3,6 +3,7 @@ from hashlib import md5
 from itertools import product
 from string import ascii_lowercase
 import multiprocessing
+from dataclasses import dataclass
 
 class Combinations:
     def __init__(self, alphabet, length):
