@@ -7,6 +7,14 @@ QUEUE_TYPES = {
     "heap": PriorityQueue
 }
 
+PRODUCTS = (
+    ":ballon:",
+    ":cookie:",
+    ":crystal_ball:",
+    ":diving_mask:",
+    ":flashlight:",
+)
+
 def main (args):
     buffer = QUEUE_TYPES [args.queue]()
 
@@ -18,3 +26,8 @@ def parse_args ():
     parser.add_argument ("-ps", "--producder-speed", type = int, default = 1)
     parser.add_argument ("-cs", "--consumer-speed", type = int, default = 1) 
 
+if __name__ == "__main__":
+    try: 
+        main(parse_args())
+    except KeyboardInterrupt:
+        pass
