@@ -2,6 +2,8 @@ import argparse
 import asyncio
 from collections import Counter
 import aiohttp
+from urllib.parse import urljoin
+from bs4 import BeautifulSoup
 
 async def main (args):
     session = aiohttp.ClientSession()
