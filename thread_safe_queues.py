@@ -50,7 +50,11 @@ class Priority (IntEnum):
     MEDIUM = 2
     LOW = 3
 
-
+PRIORITIZED_PRODUCTS = (
+    Product (Priority.HIGH, ":1st_place_medal:"),
+    Product (Priority.MEDIUM, ":2nd_place_medal:"),
+    Product (Priority.LOW, ":3rd_place_medal:"),
+)
 
 class Worker (threading.Thread):
     def __init__ (self, speed, buffer):
