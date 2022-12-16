@@ -3,6 +3,11 @@ from hashlib import md5
 from itertools import product
 from string import ascii_lowercase
 
+class Combinations:
+    def __init__(self, alphabet, length):
+        self.alphabet = alphabet
+        self.length = length
+
 def reverse_md5(hash_value, alphabet=ascii_lowercase, max_length=6):
     for length in range(1, max_length + 1):
         for combination in product(alphabet, repeat=length):
