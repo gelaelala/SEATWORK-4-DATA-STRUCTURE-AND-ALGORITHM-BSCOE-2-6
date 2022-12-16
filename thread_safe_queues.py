@@ -76,6 +76,14 @@ class Producer (Worker):
             self.buffer.put (self.product)
             self.stimulate_idle
 
+class Consumer (Worker):
+    def run (self):
+        while True:
+            self.product = self.buffer.get ()
+            self.stimulate_work ()
+            self.buffer.taks_done ()
+            self.stimualte_idle ()
+
 class View:
     def __init__ (self, buffer, producers, consumers):
         self.buffer = buffer
