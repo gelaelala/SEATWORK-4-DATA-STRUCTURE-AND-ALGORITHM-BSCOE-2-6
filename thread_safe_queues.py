@@ -2,7 +2,7 @@ import argparse
 from itertools import zip_longest
 from queue import LifoQueue, PriorityQueue, Queue
 import threading
-from random import randint
+from random import choice, randint
 from time import sleep
 
 from rich.align import Align
@@ -63,6 +63,11 @@ class Worker (threading.Thread):
         for _ in range (100):
             sleep (delay / 100)
             self.progress += 1
+
+class Producer (Worker):
+    def __init__ (self, speed, buffer, products):
+        super ().__init__ (speed, buffer)
+        self.products = products
 
 class View:
     def __init__ (self, buffer, producers, consumers):
