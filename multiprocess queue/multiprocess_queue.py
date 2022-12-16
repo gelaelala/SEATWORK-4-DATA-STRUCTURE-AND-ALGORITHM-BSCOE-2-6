@@ -8,6 +8,8 @@ import argparse
 import queue
 import time
 
+POISON_PILL = None
+
 class Combinations:
     def __init__(self, alphabet, length):
         self.alphabet = alphabet
