@@ -4,6 +4,7 @@ from itertools import product
 from string import ascii_lowercase
 import multiprocessing
 from dataclasses import dataclass
+import argparse
 
 class Combinations:
     def __init__(self, alphabet, length):
