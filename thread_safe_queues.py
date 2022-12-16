@@ -86,6 +86,15 @@ class View:
             case LifoQueue ():
                 title = "Stack"
                 products = list (self.buffer.queue)
+            case Queue ():
+                title = "Queue"
+                products = reversed (list(self.buffer.queue))
+            case _:
+                title = products = ""
+
+        rows = [
+            Panel (f"[bold] {title}: [/] {', '.join (products)}", width = 82)
+        ]   
 
 def main (args):
     buffer = QUEUE_TYPES [args.queue]()
