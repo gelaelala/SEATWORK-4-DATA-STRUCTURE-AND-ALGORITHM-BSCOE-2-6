@@ -1,4 +1,6 @@
 import argparse
+from dataclasses import dataclass, field
+from enum import IntEnum
 from itertools import zip_longest
 from queue import LifoQueue, PriorityQueue, Queue
 import threading
@@ -149,6 +151,7 @@ def main (args):
 
     view = View (buffer, producers, consumers)
     view.animate ()
+
 def parse_args ():
     parser = argparse.ArgumentParser ()
     parser.add_argument ("-q", "--queue", choices = QUEUE_TYPES, default = "fifo")
