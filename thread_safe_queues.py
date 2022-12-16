@@ -20,7 +20,7 @@ QUEUE_TYPES = {
 }
 
 PRODUCTS = (
-    ":ballon:",
+    ":balloon:",
     ":cookie:",
     ":crystal_ball:",
     ":diving_mask:",
@@ -100,10 +100,10 @@ class Producer (Worker):
 class Consumer (Worker):
     def run (self):
         while True:
-            self.product = self.buffer.get ()
-            self.simulate_work ()
-            self.buffer.taks_done ()
-            self.simulate_idle ()
+            self.product = self.buffer.get()
+            self.simulate_work()
+            self.buffer.task_done()
+            self.simulate_idle()
 
 class View:
     def __init__ (self, buffer, producers, consumers):
@@ -112,9 +112,7 @@ class View:
         self.consumers = consumers
     
     def animate (self):
-        with Live (
-            self.render (), screen = True, refresh_per_second = 10   
-        ) as live:
+        with Live (self.render (), screen = True, refresh_per_second = 10) as live:
             while True:
                 live.update (self.render())
 
@@ -133,9 +131,7 @@ class View:
             case _:
                 title = products = ""
 
-        rows = [
-            Panel (f"[bold] {title}: [/] {', '.join (products)}", width = 82)  
-        ]
+        rows = [Panel (f"[bold] {title}: [/] {', '.join (products)}", width = 82)]
         pairs = zip_longest (self.producers, self.consumers)
         for i, (producer, consumer) in enumerate (pairs, 1):
             left_panel = self.panel (producer, f"Producer {i}")
@@ -147,9 +143,7 @@ class View:
         if worker is None:
             return ""
         padding = " " * int (29 / 100 * worker.progress)
-        align = Align (
-            padding + worker.state, align = "left", vertical = "middle"
-        )
+        align = Align (padding + worker.state, align = "left", vertical = "middle")
         return Panel (align, height = 5, title = title)
 
 def main (args):
@@ -177,8 +171,9 @@ def parse_args ():
     parser.add_argument ("-q", "--queue", choices = QUEUE_TYPES, default = "fifo")
     parser.add_argument ("-p", "--producers", type = int, default = 3)
     parser.add_argument ("-c", "--consumers", type = int, default = 2)
-    parser.add_argument ("-ps", "--producder-speed", type = int, default = 1)
+    parser.add_argument ("-ps", "--producer-speed", type = int, default = 1)
     parser.add_argument ("-cs", "--consumer-speed", type = int, default = 1) 
+    return parser.parse_args ()
 
 if __name__ == "__main__":
     try: 
