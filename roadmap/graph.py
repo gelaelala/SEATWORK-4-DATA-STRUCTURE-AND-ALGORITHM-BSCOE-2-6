@@ -31,7 +31,7 @@ def load_graph (filename, node_factory):
         for name1, name2, weights in graph.edges (data = True)
     )
 
-def shortest_path (graph, source, order_by = None):
+def shortest_path (graph, source, destination, order_by = None):
     queue = Queue(source)
     visited = {source}
     previous = {}
@@ -44,4 +44,6 @@ def shortest_path (graph, source, order_by = None):
             if neighbor not in visited:
                 visited.add(neighbor)
                 queue.enqueue(neighbor)
-        
+                previous [neighbor] = node
+                if neighbor == destination:
+                    return retrace (previous, source, destination)
