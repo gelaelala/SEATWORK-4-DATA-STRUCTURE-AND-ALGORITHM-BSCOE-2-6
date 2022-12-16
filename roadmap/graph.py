@@ -1,6 +1,7 @@
 from typing import NamedTuple
 import networkx as nx
 from queues import Queue
+from collections import deque
 
 
 class City(NamedTuple):
