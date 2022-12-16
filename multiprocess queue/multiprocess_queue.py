@@ -23,6 +23,12 @@ class Combinations:
             for i in reversed(range(self.length))
         )
 
+@dataclass(frozen=True)
+class Job:
+    combinations: Combinations
+    start_index: int
+    stop_index: int
+
 class Worker(multiprocessing.Process):
     def __init__(self, queue_in, queue_out, hash_value):
         super().__init__(daemon=True)
