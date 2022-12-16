@@ -110,3 +110,6 @@ def recursive_depth_first_traverse (graph, source, order_by = None):
                 yield from visit (neighbor)
         
     return visit (source)
+
+def depth_first_search (graph, source, predicate, order_by = None):
+    return search (depth_first_traverse, graph, source, predicate, order_by)
