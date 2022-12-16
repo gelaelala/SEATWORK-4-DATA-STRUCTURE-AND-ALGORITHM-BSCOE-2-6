@@ -85,7 +85,7 @@ def parse_args():
     parser.add_argument(
         "-w",
         "--num-workers",
-        type = int
+        type = int,
         default = multiprocessing.cpu_count(),
     )
     return parser.parse_args()
