@@ -69,6 +69,13 @@ class Producer (Worker):
         super ().__init__ (speed, buffer)
         self.products = products
 
+    def run (self):
+        while True:
+            self.product = choice (self.products)
+            self.stimulate_work ()
+            self.buffer.put (self.product)
+            self.stimulate_idle
+
 class View:
     def __init__ (self, buffer, producers, consumers):
         self.buffer = buffer
