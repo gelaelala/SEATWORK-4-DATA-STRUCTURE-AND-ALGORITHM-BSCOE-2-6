@@ -1,8 +1,15 @@
 import argparse
+from itertools import zip_longest
 from queue import LifoQueue, PriorityQueue, Queue
 import threading
 from random import randint
 from time import sleep
+
+from rich.align import Align
+from rich.columns import Columns
+from rich.console import Group
+from rich.live import Live
+from rich.panel import Panel
 
 QUEUE_TYPES = {
     "fifo": Queue,
