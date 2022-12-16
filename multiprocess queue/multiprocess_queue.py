@@ -79,7 +79,16 @@ def main(args):
             queue_in.put(Job(combinations, *indices))
 
 def parse_args():
-    parser = argparse.ArgumentParser() 
+    parser = argparse.ArgumentParser()
+    parser.add_argument("hash_value")
+    parser.add_argument("-m", "--max-length", type=int, default=6)
+    parser.add_argument(
+        "-w",
+        "--num-workers",
+        type = int
+        default = multiprocessing.cpu_count(),
+    )
+    return parser.parse_args()
 
 def chunk_indices(length, num_chunks):
     start = 0
@@ -91,4 +100,4 @@ def chunk_indices(length, num_chunks):
         num_chunks -= 1
 
 if __name__ == "__main__":
-    main()
+    main(parse_args())
