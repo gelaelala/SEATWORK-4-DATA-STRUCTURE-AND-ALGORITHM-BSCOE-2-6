@@ -13,6 +13,11 @@ async def main (args):
     finally:
         await session.close()
 
+async def fethc_html (session, url):
+    async with session.get(url) as response:
+        if response.ok and response.context_type == "text/html":
+            return await response.text()
+
 def parse_args ():
     parser = argparse.ArgumentParser()
     parser.add_argument("url")
