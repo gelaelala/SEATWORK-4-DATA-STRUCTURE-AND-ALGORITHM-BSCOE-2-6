@@ -39,7 +39,7 @@ async def main (args):
         for task in tasks:
             task.cancel()
 
-        await asyncio.gather(*tasks, return_expectations = True)
+        await asyncio.gather(*tasks, return_exceptions=True)
         
         display (links)
     finally:
@@ -76,8 +76,8 @@ def parse_links (url,html):
 def parse_args ():
     parser = argparse.ArgumentParser()
     parser.add_argument("url")
-    parser.add_argument("d", "--max-depth", type = int, default = 2)
-    parser.add_argument("w", "--num-workers", type = int, default = 3)
+    parser.add_argument("-d", "--max-depth", type = int, default = 2)
+    parser.add_argument("-w", "--num-workers", type = int, default = 3)
     return parser.parse_args()
 
 def display (links):
