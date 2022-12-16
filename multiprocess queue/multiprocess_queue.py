@@ -78,6 +78,9 @@ def main(args):
         for indices in chunk_indices(len(combinations), len(workers)):
             queue_in.put(Job(combinations, *indices))
 
+def parse_args():
+    parser = argparse.ArgumentParser() 
+
 def chunk_indices(length, num_chunks):
     start = 0
     while num_chunks > 0:
