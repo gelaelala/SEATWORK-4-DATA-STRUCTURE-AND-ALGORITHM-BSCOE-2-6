@@ -72,17 +72,17 @@ class Producer (Worker):
     def run (self):
         while True:
             self.product = choice (self.products)
-            self.stimulate_work ()
+            self.simulate_work ()
             self.buffer.put (self.product)
-            self.stimulate_idle
+            self.simulate_idle
 
 class Consumer (Worker):
     def run (self):
         while True:
             self.product = self.buffer.get ()
-            self.stimulate_work ()
+            self.simulate_work ()
             self.buffer.taks_done ()
-            self.stimualte_idle ()
+            self.simulate_idle ()
 
 class View:
     def __init__ (self, buffer, producers, consumers):
