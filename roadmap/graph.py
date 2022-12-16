@@ -31,11 +31,12 @@ def load_graph (filename, node_factory):
         for name1, name2, weights in graph.edges (data = True)
     )
 
-def breadth_first_traverse(graph, source, order_by = None):
+def shortest_path (graph, source, order_by = None):
     queue = Queue(source)
     visited = {source}
+    previous = {}
     while queue:
-        yield (node := queue.dequeue())
+        node = queue.dequeue()
         neighbors = list (graph.neighbors (node))
         if order_by:
             neighbors.sort (key = order_by)
@@ -43,8 +44,4 @@ def breadth_first_traverse(graph, source, order_by = None):
             if neighbor not in visited:
                 visited.add(neighbor)
                 queue.enqueue(neighbor)
-
-def breadth_first_search (graph, source, predicate, order_by = None):
-    for node in breadth_first_traverse (graph, source, order_by):
-        if predicate (node):
-            return node
+        
