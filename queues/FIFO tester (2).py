@@ -5,3 +5,5 @@ print (len(fifo))
 
 for element in fifo:
     print (element)
+
+print (len(fifo))
