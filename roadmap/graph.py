@@ -1,6 +1,6 @@
 from typing import NamedTuple
 import networkx as nx
-from queues import Queue
+from queues import Queue, Stack
 from collections import deque
 
 
@@ -84,3 +84,14 @@ def connected (graph, source, destination):
     return shortest_path (graph, source, destination) is not None
 
 def depth_first_traverse (graph, source, order_by = None):
+    stack = Stack (source)
+    visited = set ()
+    while stack:
+        if (node := stack.dequeue ()) not in visited:
+            yield node
+            visited.add (node)
+            neighbors = list (graph.neighbors (node))
+            if order_by:
+                neighbors.sort (key = order_by)
+            for neighbor in reversed (neighbors):
+                stack.enqueue (neighbor)
