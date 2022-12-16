@@ -8,3 +8,5 @@ fifo.enqueue ("3rd")
 print(fifo.dequeue ())
 
 print(fifo.dequeue())
+
+print(fifo.dequeue ())
